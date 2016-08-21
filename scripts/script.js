@@ -64,19 +64,18 @@ function dragBorder(ev)
 function drop(ev)
 {
     ev.preventDefault();
-	var data = ev.dataTransfer.getData("text");
+    var data = ev.dataTransfer.getData("text");
+    ev.target.style.border = "0";
     
-    if(ev.target.appendChild(document.getElementById(data)) == true)
+    if(ev.target.hasChildNodes())
     {
     	console.log("déjà une pièce");
     }
     else
     {
 	    ev.target.appendChild(document.getElementById(data));
-	    ev.target.style.border = "0";
     }
 }
-
 
 /*--Return--*/
 piecesBoxTab = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
