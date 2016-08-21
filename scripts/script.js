@@ -67,9 +67,10 @@ function drop(ev)
     var data = ev.dataTransfer.getData("text");
     ev.target.style.border = "0";
     
-    if(ev.target.hasChildNodes())
+    if(ev.target.closest(".piece"))
     {
     	console.log("déjà une pièce");
+    	//inverser les pièces
     }
     else
     {
