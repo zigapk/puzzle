@@ -61,11 +61,26 @@ function dragBorder(ev)
 {
 	ev.target.style.border = "1px dashed black";
 }
-function drop(ev)
+function dropPuzzle(ev)
 {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
     ev.target.style.border = "0";
+    
+    if(ev.target.closest(".piece"))
+    {
+    	console.log("déjà une pièce");
+    	//inverser les pièces
+    }
+    else
+    {
+	    ev.target.appendChild(document.getElementById(data));
+    }
+}
+function dropBox(ev)
+{
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
     
     if(ev.target.closest(".piece"))
     {
@@ -99,7 +114,7 @@ while(count < piecesBoxTab.length)
 
 	piececontainer.setAttribute("ondragover","allowDrop(event)");
 
-	piececontainer.setAttribute("ondrop","drop(event)");
+	piececontainer.setAttribute("ondrop","dropBox(event)");
 
 	piececontainer.setAttribute("ondragend","dragBorder(event)");
 
@@ -129,7 +144,7 @@ while(rowCount <= 3)
 		emplacement.classList.add("emplacement");
 
 
-		emplacement.setAttribute("ondrop","drop(event)");
+		emplacement.setAttribute("ondrop","dropPuzzle(event)");
 
 		emplacement.setAttribute("ondragover","allowDrop(event)");
 
@@ -148,8 +163,6 @@ while(rowCount <= 3)
 
 	rowCount++;
 }
-
-
 
 PATTERNBUTTON.onclick = showPuzzle;
 RESTARTBUTTON.onclick = restart;
