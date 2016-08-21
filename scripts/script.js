@@ -9,7 +9,7 @@ var count;
 var piecesBoxTab;
 var piece, emplacement;
 
-var i, j;
+var rowCount, emplacementCount;
 
 /*--Functions--*/
 //Help
@@ -28,13 +28,9 @@ function showPuzzle()
 }
 
 //Random
-function random()
+function restart()
 {
-	piecesBoxTab.sort(function()
-	{
-		location.reload();
-		return Math.random() - 0.5;
-	});
+	location.reload();
 }
 
 //Rotation pièce 90° quand dBclick
@@ -111,6 +107,7 @@ while(count < piecesBoxTab.length)
 	piece.classList.add("piece");
 	piece.setAttribute("id", "piece" + piecesBoxTab[count]);
 	
+
 	piececontainer.setAttribute("ondragover","allowDrop(event)");
 
 	piececontainer.setAttribute("ondrop","drop(event)");
@@ -121,25 +118,27 @@ while(count < piecesBoxTab.length)
 
 	piece.setAttribute("ondragstart","dragStart(event)");
 
+
 	PIECEXBOX.appendChild(piececontainer);
 	piececontainer.appendChild(piece);
 	count++;
 }
 
 //Boite Puzzle
-i = 0;
-while(i < 4)
+rowCount = 0;
+while(rowCount <= 3)
 {
 	row = document.createElement("tr");
 	row.classList.add("row");
 	PUZZLE.appendChild(row);
 
-	j = 0;
+	emplacementCount = 0;
 
-	while(j < 4)
+	while(emplacementCount <= 3)
 	{
 		emplacement = document.createElement("td");
 		emplacement.classList.add("emplacement");
+
 
 		emplacement.setAttribute("ondrop","drop(event)");
 
@@ -151,16 +150,17 @@ while(i < 4)
 
 		emplacement.setAttribute("ondragleave","dragNoBorder(event)");
 
+
 		row.appendChild(emplacement);
 
-		j++;
+		emplacementCount++;
 	}
 
 
-	i++;
+	rowCount++;
 }
 
 
 
 PATTERNBUTTON.onclick = showPuzzle;
-RESTARTBUTTON.onclick = random;
+RESTARTBUTTON.onclick = restart;
