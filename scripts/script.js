@@ -40,18 +40,15 @@ function restart()
 }
 */
 
-//Drag & Drop (+ HTML attribute)
+//Drag & Drop
 function allowDrop(ev)
 {
     ev.preventDefault();
 }
-
 function dragStart(ev)
 {
     ev.dataTransfer.setData("text", ev.target.id);
-    ev.target.style.border = "1px dashed black";
 }
-
 function dragEnter(ev)
 {
 	ev.target.style.border = "2px solid white";
@@ -60,33 +57,25 @@ function dragNoBorder(ev)
 {
 	ev.target.style.border = "0";
 }
-
 function dragBorder(ev)
 {
 	ev.target.style.border = "1px dashed black";
 }
-
-
-
 function drop(ev)
 {
     ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
-    ev.target.style.border = "0";
-
-    /*if(ev.target.appendChild(document.getElementById(data)))
+	var data = ev.dataTransfer.getData("text");
+    
+    if(ev.target.appendChild(document.getElementById(data)) == true)
     {
-    	console.log("ok");
+    	console.log("déjà une pièce");
     }
     else
     {
-    	ev.target.appendChild(document.getElementById(data));
-    }*/
+	    ev.target.appendChild(document.getElementById(data));
+	    ev.target.style.border = "0";
+    }
 }
-
-
-
 
 
 /*--Return--*/
