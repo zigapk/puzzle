@@ -111,17 +111,12 @@ while(count < piecesBoxTab.length)
 	piece.classList.add("piece");
 	piece.setAttribute("id", "piece" + piecesBoxTab[count]);
 	
-
 	piececontainer.setAttribute("ondragover","allowDrop(event)");
-
 	piececontainer.setAttribute("ondrop","dropBox(event)");
-
 	piececontainer.setAttribute("ondragend","dragBorder(event)");
 
 	piece.setAttribute("draggable","true");
-
 	piece.setAttribute("ondragstart","dragStart(event)");
-
 
 	PIECEXBOX.appendChild(piececontainer);
 	piececontainer.appendChild(piece);
@@ -143,17 +138,11 @@ while(rowCount <= 3)
 		emplacement = document.createElement("td");
 		emplacement.classList.add("emplacement");
 
-
 		emplacement.setAttribute("ondrop","dropPuzzle(event)");
-
 		emplacement.setAttribute("ondragover","allowDrop(event)");
-
 		emplacement.setAttribute("ondragend","dragNoBorder(event)");
-
 		emplacement.setAttribute("ondragenter","dragEnter(event)");
-
 		emplacement.setAttribute("ondragleave","dragNoBorder(event)");
-
 
 		row.appendChild(emplacement);
 
